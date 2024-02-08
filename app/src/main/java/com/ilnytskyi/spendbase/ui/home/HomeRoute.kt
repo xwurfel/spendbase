@@ -15,7 +15,6 @@ import com.ilnytskyi.spendbase.ui.home.card_details_screen.components.CardDetail
 import com.ilnytskyi.spendbase.ui.home.home_screen.HomeEvent
 import com.ilnytskyi.spendbase.ui.home.home_screen.HomeState
 import com.ilnytskyi.spendbase.ui.navigation.BottomNavItem
-import com.ilnytskyi.spendbase.ui.not_implemented.NotImplementedScreen
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
