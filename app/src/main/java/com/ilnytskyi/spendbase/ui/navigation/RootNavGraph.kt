@@ -9,8 +9,8 @@ import com.ilnytskyi.spendbase.ui.home.HomeRoute
 import com.ilnytskyi.spendbase.ui.not_implemented.NotImplementedScreen
 
 @Composable
-fun RootNavGraph(navController: NavHostController, paddingValues: PaddingValues) {
-    NavHost(navController = navController, startDestination = BottomNavItem.Home.route) {
+fun RootNavGraph(rootNavController: NavHostController, paddingValues: PaddingValues) {
+    NavHost(navController = rootNavController, startDestination = BottomNavItem.Home.route) {
         composable(BottomNavItem.Home.route) {
             HomeRoute(paddingValues = paddingValues)
         }

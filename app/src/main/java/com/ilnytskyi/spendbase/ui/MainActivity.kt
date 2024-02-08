@@ -20,9 +20,9 @@ class MainActivity : ComponentActivity() {
             SpendbaseTheme {
                 val navController = rememberNavController()
                 Scaffold(bottomBar = {
-                    BottomNavigation(navController = navController)
+                    BottomNavigation(rootNavController = navController)
                 }) { paddingValues ->
-                    RootNavGraph(navController = navController, paddingValues = paddingValues)
+                    RootNavGraph(rootNavController = navController, paddingValues = paddingValues)
                 }
             }
         }

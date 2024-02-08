@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.ilnytskyi.spendbase.domain.use_cases.card.GetCardsUseCase
 import com.ilnytskyi.spendbase.domain.use_cases.transaction.GetTransactionsUseCase
 import com.ilnytskyi.spendbase.domain.util.Resource
+import com.ilnytskyi.spendbase.ui.home.home_screen.HomeState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.StateFlow
@@ -28,17 +29,6 @@ class HomeViewModel @Inject constructor(
     init {
         collectCards()
         collectTransactions()
-    }
-
-    fun onEvent(event: HomeEvent) {
-        when (event) {
-            is HomeEvent.SelectCard -> {
-
-            }
-            is HomeEvent.SelectTransaction -> {
-
-            }
-        }
     }
 
     private fun collectCards() {
