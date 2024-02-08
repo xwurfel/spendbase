@@ -63,10 +63,10 @@ dependencies {
     implementation(libs.androidx.material3)
 
     implementation(libs.androidx.material)
-    implementation ("androidx.navigation:navigation-compose:2.7.7")
+    implementation (libs.androidx.navigation.compose)
 
     // Font
-    implementation("androidx.compose.ui:ui-text-google-fonts:1.4.3")
+    implementation(libs.androidx.ui.text.google.fonts)
 
     // Retrofit
     implementation(libs.retrofit2.retrofit)
@@ -77,6 +77,10 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.hilt.navigation.compose)
     kapt(libs.hilt.android.compiler)
+
+    // Coil
+    implementation(libs.coil.compose)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
