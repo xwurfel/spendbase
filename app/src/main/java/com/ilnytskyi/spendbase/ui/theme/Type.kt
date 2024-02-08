@@ -21,7 +21,6 @@ val interFontFamily = FontFamily(
     Font(interFontName, provider)
 )
 
-
 val Typography = Typography(
     bodyLarge = TextStyle(
         fontFamily = interFontFamily,
@@ -34,19 +33,25 @@ val Typography = Typography(
         fontSize = 32.sp,
         lineHeight = 40.sp,
         fontFamily = interFontFamily,
-        fontWeight = FontWeight(800),
+        fontWeight = FontWeight.ExtraBold,
     ),
     headlineMedium = TextStyle(
         fontSize = 28.sp,
         lineHeight = 36.sp,
         fontFamily = interFontFamily,
-        fontWeight = FontWeight(800),
+        fontWeight = FontWeight.ExtraBold,
 
         ),
     bodyMedium = TextStyle(
         fontSize = 14.sp,
         lineHeight = 20.sp,
         fontFamily = interFontFamily,
-        fontWeight = FontWeight(500),
+        fontWeight = FontWeight.Bold,
+    ),
+    labelMedium = TextStyle(
+        fontSize = 10.sp,
+        lineHeight = 16.sp,
+        fontFamily = interFontFamily,
+        fontWeight = FontWeight.Bold,
     )
 )
