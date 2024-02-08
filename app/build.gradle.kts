@@ -62,8 +62,11 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
-    implementation("androidx.compose.material:material:1.6.1")
+    implementation(libs.androidx.material)
     implementation ("androidx.navigation:navigation-compose:2.7.7")
+
+    // Font
+    implementation("androidx.compose.ui:ui-text-google-fonts:1.4.3")
 
     // Retrofit
     implementation(libs.retrofit2.retrofit)

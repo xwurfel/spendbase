@@ -10,12 +10,14 @@ espressoCore = "3.5.1"
 lifecycleRuntimeKtx = "2.7.0"
 activityCompose = "1.8.2"
 composeBom = "2024.01.00"
+material = "1.6.1"
 retrofitVersion = "2.9.0"
 lifecycleRuntimeCompose = "2.7.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+androidx-material = { module = "androidx.compose.material:material", version.ref = "material" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroid" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
