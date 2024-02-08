@@ -1,4 +1,4 @@
-package com.ilnytskyi.spendbase.ui.home
+package com.ilnytskyi.spendbase.ui.home.home_screen
 
 import com.ilnytskyi.spendbase.domain.model.card.Card
 import com.ilnytskyi.spendbase.domain.model.transaction.Transaction
@@ -10,8 +10,8 @@ import com.ilnytskyi.spendbase.domain.model.transaction.Transaction
 data class HomeState(
     val cards: List<Card> = emptyList(),
     val transactions: List<Transaction> = emptyList(),
-    val selectedCard: Card? = null,
-    val selectedTransaction: Transaction? = null,
+    var selectedCardId: String? = null,
+    var selectedTransactionId: String? = null,
 
     val isCardsLoading: Boolean = false,
     val isTransactionsLoading: Boolean = false,

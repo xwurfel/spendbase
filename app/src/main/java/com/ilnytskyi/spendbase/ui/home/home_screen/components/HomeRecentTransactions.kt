@@ -1,14 +1,17 @@
-package com.ilnytskyi.spendbase.ui.home.components
+package com.ilnytskyi.spendbase.ui.home.home_screen.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -17,23 +20,27 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import com.ilnytskyi.spendbase.R
 import com.ilnytskyi.spendbase.domain.model.card.Card
 import com.ilnytskyi.spendbase.domain.model.transaction.Account
 import com.ilnytskyi.spendbase.domain.model.transaction.Merchant
 import com.ilnytskyi.spendbase.domain.model.transaction.Transaction
+import com.ilnytskyi.spendbase.domain.model.transaction.iconUrl
 import com.ilnytskyi.spendbase.ui.theme.Neutral500
 import com.ilnytskyi.spendbase.ui.theme.SpendbaseTheme
 
 @Composable
 fun HomeRecentTransactions(
     transactions: List<Transaction>,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onClick: (String) -> Unit = {}
 ) {
     Surface(
         modifier = modifier,
@@ -54,8 +61,11 @@ fun HomeRecentTransactions(
                     )
                 )
             }
+            Spacer(modifier = Modifier.height(8.dp))
             transactions.forEach {
-                RecentTransactionItem(transaction = it)
+                RecentTransactionItem(transaction = it) { transaction ->
+                    onClick(transaction.id)
+                }
             }
 
         }
@@ -63,8 +73,9 @@ fun HomeRecentTransactions(
 }
 
 @Composable
-fun RecentTransactionItem(
-    transaction: Transaction, onClick: (Transaction) -> Unit = {}, modifier: Modifier = Modifier
+private fun RecentTransactionItem(
+    transaction: Transaction, modifier: Modifier = Modifier,
+    onClick: (Transaction) -> Unit = {}
 ) {
     Row(
         modifier = modifier
@@ -74,12 +85,19 @@ fun RecentTransactionItem(
         verticalAlignment = Alignment.CenterVertically
     ) {
 
-        //TODO add images of transaction and receipt
-        Image(
-            painter = painterResource(id = R.drawable.ic_account),
-            contentDescription = null,
-            modifier = Modifier.size(24.dp)
-        )
+        Box(
+            modifier = Modifier
+                .size(40.dp)
+                .clip(CircleShape)
+                .background(MaterialTheme.colorScheme.surface),
+            contentAlignment = Alignment.Center
+        ) {
+            AsyncImage(
+                model = transaction.merchant.iconUrl() ?: R.drawable.ic_receive_arrow,
+                contentDescription = null,
+                modifier = Modifier.size(24.dp)
+            )
+        }
         Column {
             Text(text = transaction.origin, style = MaterialTheme.typography.bodyMedium)
             Text(
@@ -89,9 +107,9 @@ fun RecentTransactionItem(
             )
         }
 
-        // TODO handle negative amounts
         Text(
-            text = "$${transaction.amount}",
+            text = if (transaction.amount >= 0) "$${transaction.amount}"
+            else "-$${-transaction.amount}",
             style = MaterialTheme.typography.bodyMedium,
             textAlign = TextAlign.End,
             color = if (transaction.amount > 0)
@@ -100,7 +118,7 @@ fun RecentTransactionItem(
             modifier = Modifier.weight(1f)
         )
         Image(
-            painter = painterResource(id = R.drawable.ic_home), contentDescription = null,
+            painter = painterResource(id = R.drawable.ic_receipt_added), contentDescription = null,
             modifier = Modifier.size(24.dp)
         )
 

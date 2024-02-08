@@ -1,4 +1,4 @@
-package com.ilnytskyi.spendbase.ui.home.components
+package com.ilnytskyi.spendbase.ui.home.home_screen.components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -13,10 +13,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ilnytskyi.spendbase.R
-import com.ilnytskyi.spendbase.ui.home.HomeEvent
+import com.ilnytskyi.spendbase.ui.home.home_screen.HomeEvent
 import com.ilnytskyi.spendbase.ui.theme.SpendbaseTheme
 
 @Composable
@@ -30,10 +31,11 @@ fun HomeTopBar(
         Text(
             text = "Money",
             style = MaterialTheme.typography.headlineLarge,
-            color = MaterialTheme.colorScheme.onSurface
+            color = MaterialTheme.colorScheme.onSurface,
+            fontWeight = FontWeight.ExtraBold
         )
         Spacer(modifier = Modifier.weight(1f))
-        IconButton(onClick = { /*TODO*/ }) {
+        IconButton(onClick = {  }) {
             Icon(
                 imageVector = Icons.Default.Add,
                 contentDescription = "Add Card",
@@ -41,7 +43,7 @@ fun HomeTopBar(
             )
         }
         Spacer(modifier = Modifier.width(16.dp))
-        IconButton(onClick = { /*TODO*/ }) {
+        IconButton(onClick = {  }) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_bank),
                 contentDescription = "Bank",

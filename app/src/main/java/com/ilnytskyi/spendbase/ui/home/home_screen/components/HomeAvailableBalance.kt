@@ -1,4 +1,4 @@
-package com.ilnytskyi.spendbase.ui.home.components
+package com.ilnytskyi.spendbase.ui.home.home_screen.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -18,6 +18,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ilnytskyi.spendbase.R
@@ -38,12 +39,10 @@ fun HomeAvailableBalance(
             Row(
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                // TODO add USA flag
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_my_cards),
+                Image(
+                    painter = painterResource(id = R.drawable.ic_usa),
                     contentDescription = null,
                     modifier = Modifier.size(21.dp),
-                    tint = MaterialTheme.colorScheme.onPrimary
                 )
                 Text(
                     text = "USD account",
@@ -54,7 +53,8 @@ fun HomeAvailableBalance(
         
             Text(
                 text = "\$100,000",
-                style = MaterialTheme.typography.headlineMedium
+                style = MaterialTheme.typography.headlineMedium,
+                fontWeight = FontWeight.ExtraBold
             )
         }
     }

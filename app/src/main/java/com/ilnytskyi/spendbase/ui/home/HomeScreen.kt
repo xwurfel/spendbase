@@ -1,7 +1,6 @@
 package com.ilnytskyi.spendbase.ui.home
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -19,11 +18,13 @@ import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.dp
 import com.ilnytskyi.spendbase.domain.model.card.Card
 import com.ilnytskyi.spendbase.domain.model.card.CardHolder
-import com.ilnytskyi.spendbase.ui.home.components.HomeAvailableBalance
-import com.ilnytskyi.spendbase.ui.home.components.HomeMyCards
-import com.ilnytskyi.spendbase.ui.home.components.HomeRecentTransactions
-import com.ilnytskyi.spendbase.ui.home.components.HomeTopBar
-import com.ilnytskyi.spendbase.ui.home.components.mockTransaction
+import com.ilnytskyi.spendbase.ui.home.home_screen.HomeEvent
+import com.ilnytskyi.spendbase.ui.home.home_screen.HomeState
+import com.ilnytskyi.spendbase.ui.home.home_screen.components.HomeAvailableBalance
+import com.ilnytskyi.spendbase.ui.home.home_screen.components.HomeMyCards
+import com.ilnytskyi.spendbase.ui.home.home_screen.components.HomeRecentTransactions
+import com.ilnytskyi.spendbase.ui.home.home_screen.components.HomeTopBar
+import com.ilnytskyi.spendbase.ui.home.home_screen.components.mockTransaction
 import com.ilnytskyi.spendbase.ui.theme.Neutral200
 
 @Composable
@@ -32,16 +33,19 @@ fun HomeScreen(
     actions: (HomeEvent) -> Unit,
     paddingValues: PaddingValues = PaddingValues(0.dp)
 ) {
+
     Surface(
         modifier = Modifier
             .fillMaxSize()
-            .padding(paddingValues),
+            .padding(paddingValues)
+            ,
         color = MaterialTheme.colorScheme.surface
     ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(16.dp)
+
         ) {
             Spacer(modifier = Modifier.height(16.dp))
             HomeTopBar(homeEvent = {})
@@ -58,12 +62,17 @@ fun HomeScreen(
                         .height(100.dp)
                 )
 
-                if (!state.isCardsLoading) HomeMyCards(cards = state.cards.take(3))
+                if (!state.isCardsLoading)
+                    HomeMyCards(cards = state.cards.take(3)){
+                        actions(HomeEvent.SelectCard(it))
+                    }
 
                 if (!state.isTransactionsLoading) {
                     HomeRecentTransactions(
                         transactions = state.transactions.take(3)
-                    )
+                    ){
+                        actions(HomeEvent.SelectTransaction(it))
+                    }
                 }
             }
 
